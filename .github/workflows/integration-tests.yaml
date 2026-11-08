@@ -3,7 +3,74 @@ name: Roboshop Integration Tests
 
 on:
   workflow_dispatch:
+    inputs:
+      namespace:
+        description: "Kubernetes namespace"
+        required: true
+        type: string
+        default: "roboshop-sit"
+
+      catalogue_url:
+        description: "Catalogue service URL"
+        required: true
+        type: string
+        default: "http://catalogue.roboshop-sit.svc.cluster.local:8080"
+
+      cart_url:
+        description: "Cart service URL"
+        required: true
+        type: string
+        default: "http://cart.roboshop-sit.svc.cluster.local:8080"
+
+      user_url:
+        description: "User service URL"
+        required: true
+        type: string
+        default: "http://user.roboshop-sit.svc.cluster.local:8080"
+
+      shipping_url:
+        description: "Shipping service URL"
+        required: true
+        type: string
+        default: "http://shipping.roboshop-sit.svc.cluster.local:8080"
+
+      payment_url:
+        description: "Payment service URL"
+        required: true
+        type: string
+        default: "http://payment.roboshop-sit.svc.cluster.local:8080"
+
   workflow_call:
+    inputs:
+      namespace:
+        description: "Kubernetes namespace"
+        required: true
+        type: string
+
+      catalogue_url:
+        description: "Catalogue service URL"
+        required: true
+        type: string
+
+      cart_url:
+        description: "Cart service URL"
+        required: true
+        type: string
+
+      user_url:
+        description: "User service URL"
+        required: true
+        type: string
+
+      shipping_url:
+        description: "Shipping service URL"
+        required: true
+        type: string
+
+      payment_url:
+        description: "Payment service URL"
+        required: true
+        type: string
 
 jobs:
   integration-tests:
@@ -26,3 +93,10 @@ jobs:
 
       - name: Run integration tests
         run: npm test
+        env:
+          NAMESPACE: ${{ inputs.namespace }}
+          CATALOGUE_URL: ${{ inputs.catalogue_url }}
+          CART_URL: ${{ inputs.cart_url }}
+          USER_URL: ${{ inputs.user_url }}
+          SHIPPING_URL: ${{ inputs.shipping_url }}
+          PAYMENT_URL: ${{ inputs.payment_url }}

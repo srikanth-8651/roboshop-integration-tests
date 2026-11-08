@@ -1,5 +1,6 @@
 
 name: Roboshop Integration Tests
+
 on:
   workflow_dispatch:
     inputs:
@@ -42,32 +43,21 @@ on:
   workflow_call:
     inputs:
       namespace:
-        description: "Kubernetes namespace"
         required: true
         type: string
-
       catalogue_url:
-        description: "Catalogue service URL"
         required: true
         type: string
-
       cart_url:
-        description: "Cart service URL"
         required: true
         type: string
-
       user_url:
-        description: "User service URL"
         required: true
         type: string
-
       shipping_url:
-        description: "Shipping service URL"
         required: true
         type: string
-
       payment_url:
-        description: "Payment service URL"
         required: true
         type: string
 
@@ -85,10 +75,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Run integration tests
         run: npm test

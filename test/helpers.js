@@ -1,10 +1,10 @@
 // Base URLs default to in-cluster service DNS in the roboshop-dev namespace.
 // Override any of these (e.g. via port-forward to localhost) when running outside the cluster.
-const CATALOGUE_URL = process.env.CATALOGUE_URL || 'http://catalogue.roboshop-dev.svc.cluster.local:8080';
-const CART_URL = process.env.CART_URL || 'http://cart.roboshop-dev.svc.cluster.local:8080';
-const USER_URL = process.env.USER_URL || 'http://user.roboshop-dev.svc.cluster.local:8080';
-const SHIPPING_URL = process.env.SHIPPING_URL || 'http://shipping.roboshop-dev.svc.cluster.local:8080';
-const PAYMENT_URL = process.env.PAYMENT_URL || 'http://payment.roboshop-dev.svc.cluster.local:8080';
+const CATALOGUE_URL = process.env.CATALOGUE_URL || 'http://catalogue.roboshop-sit.svc.cluster.local:8080';
+const CART_URL = process.env.CART_URL || 'http://cart.roboshop-sit.svc.cluster.local:8080';
+const USER_URL = process.env.USER_URL || 'http://user.roboshop-sit.svc.cluster.local:8080';
+const SHIPPING_URL = process.env.SHIPPING_URL || 'http://shipping.roboshop-sit.svc.cluster.local:8080';
+const PAYMENT_URL = process.env.PAYMENT_URL || 'http://payment.roboshop-sit.svc.cluster.local:8080';
 
 async function request(method, url, body) {
     const res = await fetch(url, {

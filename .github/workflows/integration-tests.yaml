@@ -1,6 +1,5 @@
 
 name: Roboshop Integration Tests
-
 on:
   workflow_dispatch:
     inputs:
@@ -76,7 +75,7 @@ jobs:
   integration-tests:
     runs-on:
       group: roboshop
-      labels: nodejs-dev
+      labels: nodejs-test
 
     steps:
       - name: Checkout repository
